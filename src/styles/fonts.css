@@ -1,0 +1,101 @@
+/* Grandis Font Family (Befonts free demo).
+ * Local OTF files live in /src/assets/fonts/grandis-font-family/.
+ * The free demo only ships Light, Regular (+italic) and Medium.
+ * Heavier Tailwind weights (semibold/bold/black) are mapped to Medium
+ * so the whole landing keeps a consistent look.
+ */
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-regularitalic.otf') format('opentype');
+}
+
+/* Medium covers 500. Same file is reused for 600/700/900 because the
+ * free demo does not include Bold/Black weights. */
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-regularitalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandis-medium.otf') format('opentype');
+}
+
+/* Optional display family for the wide/condensed samples in case you
+ * want to use them on specific elements: className="font-grandis-extended" */
+@font-face {
+  font-family: 'Grandis Extended';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandisextended-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Grandis Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/grandis-font-family/grandiscondensed-medium.otf') format('opentype');
+}
+
+* {
+  font-family: 'Grandis', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html,
+body {
+  font-family: 'Grandis', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
