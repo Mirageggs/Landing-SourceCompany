@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 type WebProject = {
   id: number;
@@ -116,10 +116,18 @@ function Hover3DCard({ project }: { project: WebProject }) {
 
 export function PortfolioWebSection() {
   const [active, setActive] = useState("all");
+  const sectionRef = useRef<HTMLElement>(null);
   const visible = projects.filter((p) => active === "all" || p.cat === active);
+
+  useLayoutEffect(() => {
+    sectionRef.current
+      ?.querySelectorAll(".portfolio-web-card")
+      .forEach((el) => el.classList.add("visible"));
+  }, [active]);
 
   return (
     <section
+      ref={sectionRef}
       id="portafolio-web"
       className="py-20 sm:py-28 md:py-32 bg-[#050505] text-white border-t border-white/5"
     >
@@ -155,7 +163,7 @@ export function PortfolioWebSection() {
           {visible.map((project, index) => (
             <div
               key={project.id}
-              className="reveal h-full"
+              className="reveal portfolio-web-card h-full"
               style={{ transitionDelay: `${0.08 * index}s` }}
             >
               <Hover3DCard project={project} />
