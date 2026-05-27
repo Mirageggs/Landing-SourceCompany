@@ -23,6 +23,9 @@ export function Header() {
           <a href="#portafolio" className="hover:text-[#78B803] transition-colors duration-300">
             Portafolio
           </a>
+          <a href="#portafolio-web" className="hover:text-[#78B803] transition-colors duration-300">
+            Desarrollo Web
+          </a>
         </nav>
 
         <div className="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
@@ -93,6 +96,13 @@ export function Header() {
             className="py-3 border-b border-white/5 hover:text-[#78B803] transition-colors"
           >
             Portafolio
+          </a>
+          <a
+            href="#portafolio-web"
+            onClick={closeMenu}
+            className="py-3 border-b border-white/5 hover:text-[#78B803] transition-colors"
+          >
+            Desarrollo Web
           </a>
           <a
             href="#nosotros"

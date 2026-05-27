@@ -15,7 +15,6 @@ const projects: PortfolioItem[] = [
   { id: 1, title: "CONECTA PROPIEDADES", category: "Branding / Identidad", img: conectaLogo, bg: "#0a0f05", tall: true },
   { id: 2, title: "GHEIROS INMOBILIARIA", category: "Diseño Corporativo", img: gheirosLogo, bg: "#050a0a", tall: false },
   { id: 3, title: "URBEZA INMOBILIARIA", category: "Identidad Visual", img: urbezaLogo, bg: "#050505", tall: false },
-  { id: 4, title: "PROYECTOS WEB", category: "Desarrollo de Software", img: null, bg: "#030803", tall: true },
 ];
 
 export function PortfolioSection() {
