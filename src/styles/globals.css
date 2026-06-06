@@ -41,7 +41,7 @@
   animation: pulseGreen 10s ease-in-out infinite;
 }
 
-/* Scroll reveal: hidden by default, shown when .visible is added via IntersectionObserver */
+/* Scroll reveal: toggles with .visible via IntersectionObserver (replays on scroll up/down) */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
