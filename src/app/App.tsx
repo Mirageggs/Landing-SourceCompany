@@ -13,17 +13,47 @@ import { Footer } from "./components/Footer";
 
 export default function App() {
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let scrollDirection: "down" | "up" = "down";
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY !== lastScrollY) {
+        scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
+        lastScrollY = currentScrollY;
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("visible", entry.isIntersecting);
+          const el = entry.target;
+
+          if (entry.isIntersecting) {
+            el.classList.remove("from-below", "from-above");
+            el.classList.add(scrollDirection === "down" ? "from-below" : "from-above");
+            el.classList.add("visible");
+          } else {
+            el.classList.remove("visible");
+            el.classList.remove("from-below", "from-above");
+            el.classList.add(scrollDirection === "down" ? "from-above" : "from-below");
+          }
         });
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("from-below");
+      observer.observe(el);
+    });
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {

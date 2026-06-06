@@ -41,17 +41,25 @@
   animation: pulseGreen 10s ease-in-out infinite;
 }
 
-/* Scroll reveal: toggles with .visible via IntersectionObserver (replays on scroll up/down) */
+/* Scroll reveal: direction-aware via IntersectionObserver */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
   transition:
     opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
     transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.reveal.visible {
+.reveal.from-below {
+  transform: translateY(40px);
+}
+
+.reveal.from-above {
+  transform: translateY(-40px);
+}
+
+.reveal.from-below.visible,
+.reveal.from-above.visible {
   opacity: 1;
   transform: translateY(0);
 }
