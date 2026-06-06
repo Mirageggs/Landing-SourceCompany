@@ -1,7 +1,10 @@
 import logoSource from "../../imports/LOGO_SOURCE.png";
 
 const servicios = ["Diseño Gráfico", "Producción Audiovisual", "Desarrollo de Software", "Diseño UI/UX"];
-const socials = ["Instagram", "Behance", "LinkedIn"];
+const socials = [
+  { name: "Instagram", href: "https://www.instagram.com/sourcecompanystudios/" },
+  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61559080473984&locale=es_LA" },
+];
 
 export function Footer() {
   return (
@@ -31,19 +34,21 @@ export function Footer() {
           <h5 className="text-xs font-bold tracking-widest uppercase text-gray-600 mb-4 sm:mb-6">Contacto</h5>
           <div className="space-y-3 text-sm text-gray-400">
             <a
-              href="mailto:hello@source-estudios.com"
+              href="mailto:sourcecompanystudios@gmail.com"
               className="block hover:text-[#78B803] transition-colors break-all"
             >
-              hello@source-estudios.com
+              sourcecompanystudios@gmail.com
             </a>
             <div className="flex flex-wrap gap-4 sm:gap-6 pt-4">
               {socials.map((item) => (
                 <a
-                  key={item}
-                  href="#"
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-xs tracking-widest uppercase hover:text-[#78B803] transition-colors"
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
             </div>

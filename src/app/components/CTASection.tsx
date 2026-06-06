@@ -25,7 +25,7 @@ export function CTASection() {
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <a
-            href="https://wa.me/+51931794568?text=Hola, quiero solicitar un presupuesto."
+            href="https://wa.me/+51927121476?text=Hola, quiero solicitar un presupuesto."
             target="_blank"
             rel="noreferrer"
             className="group bg-[#78B803] text-black font-black px-8 sm:px-12 py-4 sm:py-5 rounded-full text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-all duration-300 hover:scale-105 text-center"
@@ -33,7 +33,7 @@ export function CTASection() {
             Solicitar Presupuesto →
           </a>
           <a
-            href="https://wa.me/+51931794568?text=Hola, me interesa tu servicio de diseño gráfico."
+            href="https://wa.me/+51927121476?text=Hola, me interesa tu servicio de diseño gráfico."
             target="_blank"
             rel="noreferrer"
             className="border border-white/20 text-white font-medium px-8 sm:px-12 py-4 sm:py-5 rounded-full text-xs sm:text-sm uppercase tracking-widest hover:border-[#78B803] hover:text-[#78B803] transition-all duration-300 text-center"
