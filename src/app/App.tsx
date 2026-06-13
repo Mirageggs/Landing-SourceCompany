@@ -7,6 +7,8 @@ import { ServicesSection } from "./components/ServicesSection";
 import { ResultsSection } from "./components/ResultsSection";
 import { PortfolioSection } from "./components/PortfolioSection";
 import { PortfolioWebSection } from "./components/PortfolioWebSection";
+import { WebDemoSection } from "./components/WebDemoSection";
+import { DemoSection } from "./components/DemoSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
@@ -105,6 +107,8 @@ export default function App() {
         <ResultsSection />
         <PortfolioSection />
         <PortfolioWebSection />
+        <WebDemoSection />
+        <DemoSection />
         <TestimonialsSection />
         <CTASection />
       </main>
