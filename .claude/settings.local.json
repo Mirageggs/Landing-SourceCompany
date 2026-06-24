@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(ffmpeg -version)",
+      "Bash(where ffmpeg:*)",
+      "Read(//c/Users/ajaeg/AppData/Local/Programs//**)",
+      "Bash(scoop install:*)",
+      "Bash(ls -lh *.mp4)"
     ]
   }
 }
