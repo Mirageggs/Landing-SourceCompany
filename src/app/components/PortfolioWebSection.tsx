@@ -11,6 +11,9 @@ type WebProject = {
   bg: string;
   icon: string;
   accentTag: string;
+  status: "live" | "soon"; // live = desplegado y clickeable; soon = en desarrollo
+  link?: string;           // deploy en vivo (omitir si es "soon")
+  note?: string;           // aclaración, ej. "Acceso con cuenta demo"
 };
 
 const projects: WebProject[] = [
@@ -18,40 +21,75 @@ const projects: WebProject[] = [
     id: 1,
     cat: "erp",
     catLabel: "ERP / Software",
-    title: "Sistema ERP Empresarial",
+    title: "ERP Renzo's Pizza",
     description:
-      "Software de gestión operativa con monitoreo de estado en tiempo real, control de inventario y generación automatizada de reportes Z exportables.",
+      "Sistema de gestión integral en producción: pedidos, inventario, caja y reportes en tiempo real. Mi proyecto más completo.",
     tags: ["React", "Supabase", "JWT", "Dashboard"],
     accent: ["React", "Supabase"],
     bg: "bg-blue-950/40",
     icon: "💹",
     accentTag: "bg-blue-950/50 text-blue-300 border-blue-800/50",
+    status: "live",
+    link: "https://erp-renzospizza.vercel.app",
+    note: "Acceso con cuenta demo",
   },
   {
     id: 2,
-    cat: "ecommerce",
-    catLabel: "E-commerce",
-    title: "E-commerce Customizado",
+    cat: "erp",
+    catLabel: "ERP / Software",
+    title: "Renzo's Pizza QR",
     description:
-      "Plataforma de ventas integral con carrito de compras optimizado, gestión de catálogo para productos tradicionales y módulo de eventos.",
-    tags: ["Tienda Virtual", "UI/UX", "Pagos"],
-    accent: ["Tienda Virtual", "UI/UX"],
-    bg: "bg-emerald-950/40",
-    icon: "🛒",
-    accentTag: "bg-emerald-950/50 text-emerald-300 border-emerald-800/50",
+      "Carta digital accesible por código QR desde la mesa, con menú siempre actualizado y carga instantánea.",
+    tags: ["HTML", "QR", "Menú Digital"],
+    accent: ["QR"],
+    bg: "bg-blue-950/40",
+    icon: "📱",
+    accentTag: "bg-blue-950/50 text-blue-300 border-blue-800/50",
+    status: "live",
+    link: "https://renzos-pizza-qr.vercel.app",
   },
   {
     id: 3,
     cat: "web",
     catLabel: "Web Corporativa",
-    title: "Desarrollo Web Corporativo",
+    title: "Source Company",
     description:
-      "Landing pages de alta conversión, arquitectura optimizada para tiempos de carga rápidos y diseño enfocado en experiencia de usuario.",
+      "Landing corporativa de alta conversión, arquitectura optimizada para tiempos de carga rápidos y enfoque en experiencia de usuario.",
     tags: ["Landing Page", "Optimización", "Responsive"],
     accent: ["Landing Page"],
     bg: "bg-amber-950/40",
     icon: "🖥️",
     accentTag: "bg-amber-950/50 text-amber-300 border-amber-800/50",
+    status: "live",
+    link: "https://landing-source-company.vercel.app",
+  },
+  {
+    id: 4,
+    cat: "ecommerce",
+    catLabel: "E-commerce",
+    title: "Tienda Ayahuasca",
+    description:
+      "Plataforma de ventas con catálogo de productos y módulo de reservas/booking integrado. Actualmente en desarrollo.",
+    tags: ["Tienda Virtual", "Booking", "Pagos"],
+    accent: ["Tienda Virtual"],
+    bg: "bg-emerald-950/40",
+    icon: "🛒",
+    accentTag: "bg-emerald-950/50 text-emerald-300 border-emerald-800/50",
+    status: "soon",
+  },
+  {
+    id: 5,
+    cat: "automatizacion",
+    catLabel: "Automatización",
+    title: "Bot WhatsApp",
+    description:
+      "Asistente automático para WhatsApp que responde consultas, califica leads y agenda citas sin intervención humana. Ideal para negocios que no quieren perder ningún mensaje.",
+    tags: ["WhatsApp", "Bot", "IA", "Automatización"],
+    accent: ["WhatsApp", "IA"],
+    bg: "bg-green-950/40",
+    icon: "🤖",
+    accentTag: "bg-green-950/50 text-green-300 border-green-800/50",
+    status: "soon",
   },
 ];
 
@@ -60,21 +98,31 @@ const filters = [
   { id: "erp", label: "ERP / Software" },
   { id: "ecommerce", label: "E-commerce" },
   { id: "web", label: "Web Corporativa" },
+  { id: "automatizacion", label: "Automatización" },
 ];
 
 const HOVER_3D_ZONES = Array.from({ length: 8 }, (_, i) => i);
 
 function Hover3DCard({ project }: { project: WebProject }) {
-  return (
-    <div className="hover-3d group/tilt h-full cursor-pointer">
+  // Contenido de la card (idéntico para "live" y "soon")
+  const inner = (
+    <>
       <div className="rounded-2xl bg-[#0a0a0a] border border-white/5 overflow-hidden shadow-2xl shadow-black/40">
         <figure
           className={`relative aspect-video flex items-center justify-center text-5xl overflow-hidden border-b border-white/5 ${project.bg}`}
         >
           <span>{project.icon}</span>
+
+          {/* Badge "Próximamente" para proyectos en desarrollo */}
+          {project.status === "soon" && (
+            <span className="absolute top-3 right-3 text-[9px] font-bold tracking-widest uppercase text-amber-300 bg-amber-950/60 border border-amber-800/50 rounded-full px-2.5 py-1">
+              Próximamente
+            </span>
+          )}
+
           <figcaption className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover/tilt:opacity-100 transition-opacity duration-300 pointer-events-none">
             <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white border border-white/40 px-5 py-2 rounded-full">
-              Ver proyecto →
+              {project.status === "live" ? "Ver en vivo →" : "En desarrollo"}
             </span>
           </figcaption>
         </figure>
@@ -88,6 +136,9 @@ function Hover3DCard({ project }: { project: WebProject }) {
               {project.title}
             </h3>
             <p className="text-gray-500 text-sm mt-2 leading-relaxed">{project.description}</p>
+            {project.note && (
+              <p className="text-gray-600 text-xs mt-2 italic">{project.note}</p>
+            )}
           </div>
 
           <div className="flex gap-2 flex-wrap mt-auto">
@@ -107,11 +158,30 @@ function Hover3DCard({ project }: { project: WebProject }) {
         </div>
       </div>
 
+      {/* Zonas invisibles del tilt 3D (NO tocar: son hijos 2-9 del .hover-3d) */}
       {HOVER_3D_ZONES.map((zone) => (
         <div key={zone} aria-hidden="true" />
       ))}
-    </div>
+    </>
   );
+
+  // "live" -> el contenedor del tilt es un <a> para que el click navegue
+  // (los clicks en las zonas suben al enlace; el hover del tilt sigue intacto).
+  if (project.status === "live" && project.link) {
+    return (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover-3d group/tilt h-full cursor-pointer"
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  // "soon" -> no navega, cursor normal
+  return <div className="hover-3d group/tilt h-full cursor-default">{inner}</div>;
 }
 
 export function PortfolioWebSection() {
